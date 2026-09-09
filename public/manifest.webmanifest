@@ -1,0 +1,14 @@
+{
+  "name": "Giglify Admin",
+  "short_name": "Giglify Admin",
+  "description": "Authorized Giglify operations workspace.",
+  "start_url": "/overview",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#EFEFEF",
+  "theme_color": "#2E5045",
+  "icons": [
+    { "src": "/giglify.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/giglify.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

@@ -19,11 +19,18 @@ export function AdminLayout({ children }: { children: ReactNode }) {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setMenuOpen(false); };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
+
   return (
     <div className="app-shell">
       <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <Topbar onMenu={() => setMenuOpen(true)} />
       <main className="content">
-        <Topbar onMenu={() => setMenuOpen(true)} />
         {children}
       </main>
       <BottomNav onMenu={() => setMenuOpen(true)} menuOpen={menuOpen} />
