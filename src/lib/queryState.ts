@@ -1,0 +1,2 @@
+export function readQueryValue(params: URLSearchParams, key: string, fallback: string): string { return params.get(key) ?? fallback; }
+export function writeQueryValues(values: Record<string, string>): void { const url = new URL(window.location.href); Object.entries(values).forEach(([key, value]) => value ? url.searchParams.set(key, value) : url.searchParams.delete(key)); window.history.replaceState({}, "", url); }

@@ -8,6 +8,13 @@ export const ADMIN_FUNCTIONS = [
   "admin-task-funnel",
   "admin-payment-metrics",
   "admin-requester-funnel",
+  "admin-requester-queue",
+  "admin-requester-document",
+  "publish-requester-task",
+  "admin-submission-queue",
+  "admin-payment-queue",
+  "admin-support-queue",
+  "admin-audit-explorer",
 ] as const;
 
 export type AdminFunctionName = (typeof ADMIN_FUNCTIONS)[number];

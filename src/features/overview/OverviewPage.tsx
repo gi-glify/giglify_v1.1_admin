@@ -5,6 +5,7 @@ import { DateRangePicker } from "./DateRangePicker";
 import { getDefaultDateRange, validateDateRange, type DateRange } from "./dateRange";
 import { fetchOverviewMetrics, type OverviewMetrics } from "./overviewApi";
 import { MetricCard } from "./MetricCard";
+import { TrendChart } from "../../components/operations/TrendChart";
 
 function money(value: number): string { return `$${value.toFixed(2)}`; }
 
@@ -73,6 +74,7 @@ export function OverviewPage() {
       {metrics && <section className="metric-grid" aria-label="Operational metrics" data-aos="fade-up" data-aos-delay="60">
         {cards.map(([label, value, detail, href]) => <MetricCard key={label} label={label} value={value} detail={detail} href={href} onClick={(target) => navigate(target)} />)}
       </section>}
+      {metrics && <section className="trend-card" data-aos="fade-up" data-aos-delay="100"><div><p className="eyebrow">Workflow trend</p><h3>Task movement in selected range</h3><p>Aggregated counts from the selected operational window.</p></div><TrendChart labels={["Started", "Submitted", "Approved", "Rejected"]} values={[metrics.tasksStarted, metrics.tasksSubmitted, metrics.tasksApproved, metrics.tasksRejected]} /></section>}
       <p className="last-updated">{lastUpdated ? `Last updated ${lastUpdated.toLocaleTimeString()}` : "Waiting for the first metrics response"}</p>
     </>
   );
