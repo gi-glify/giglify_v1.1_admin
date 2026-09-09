@@ -17,7 +17,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     document.documentElement.style.colorScheme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
-  const value = useMemo(() => ({ theme, toggleTheme: () => setTheme((current) => current === "light" ? "dark" : "light") }), [theme]);
+  const value = useMemo(() => ({ theme, toggleTheme: () => { document.documentElement.classList.add("theme-transition"); setTheme((current) => current === "light" ? "dark" : "light"); window.setTimeout(() => document.documentElement.classList.remove("theme-transition"), 280); } }), [theme]);
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
