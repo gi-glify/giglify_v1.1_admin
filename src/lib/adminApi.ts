@@ -16,6 +16,7 @@ export const ADMIN_FUNCTIONS = [
   "admin-support-queue",
   "admin-audit-explorer",
   "admin-ai-analysis",
+  "admin-profile",
 ] as const;
 
 export type AdminFunctionName = (typeof ADMIN_FUNCTIONS)[number];

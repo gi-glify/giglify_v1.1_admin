@@ -18,7 +18,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
       <div className="topbar-inner">
       <div className="topbar-title">
         <button className="mobile-menu-button" onClick={onMenu} aria-label="Open navigation"><Menu size={20} /></button>
-        <p className="eyebrow">Operations</p>
+        <p className="eyebrow topbar-context"><img src="/giglify.svg" alt="Giglify" /> <span>Operations</span></p>
         <h2>{current?.label ?? "Admin console"}</h2>
       </div>
       <div className="topbar-actions">

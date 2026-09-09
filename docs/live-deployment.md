@@ -37,6 +37,8 @@ supabase functions deploy admin-payment-queue
 supabase functions deploy admin-payment-action
 supabase functions deploy admin-support-queue
 supabase functions deploy admin-audit-explorer
+supabase functions deploy admin-profile
+supabase functions deploy admin-ai-analysis
 ```
 
 Run the admin tests/build and manually verify sign-in, non-admin rejection, requester KYC links, task publishing, submission retry, payout reconciliation, support actions, and audit filtering before production promotion.

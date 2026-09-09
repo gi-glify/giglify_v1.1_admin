@@ -12,6 +12,8 @@ import { SubmissionQueuePage } from "../features/submissions/SubmissionQueuePage
 import { PaymentQueuePage } from "../features/payments/PaymentQueuePage";
 import { UsersSupportPage } from "../features/support/UsersSupportPage";
 import { AuditLogPage } from "../features/audit/AuditLogPage";
+import { AdminProfilePage } from "../features/profile/AdminProfilePage";
+import { ToastProvider } from "./ToastProvider";
 
 function ProtectedFeature({ title }: { title: string }) {
   return <RequireAdmin><AdminLayout><FeaturePlaceholder title={title} /></AdminLayout></RequireAdmin>;
@@ -20,7 +22,7 @@ function ProtectedFeature({ title }: { title: string }) {
 export function AppRouter() {
   return (
     <BrowserRouter>
-      <AuthProvider>
+      <ToastProvider><AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forbidden" element={<ForbiddenPage />} />
@@ -32,9 +34,10 @@ export function AppRouter() {
           <Route path="/payments" element={<RequireAdmin><AdminLayout><PaymentQueuePage /></AdminLayout></RequireAdmin>} />
           <Route path="/users" element={<RequireAdmin><AdminLayout><UsersSupportPage /></AdminLayout></RequireAdmin>} />
           <Route path="/audit" element={<RequireAdmin><AdminLayout><AuditLogPage /></AdminLayout></RequireAdmin>} />
+          <Route path="/profile" element={<RequireAdmin><AdminLayout><AdminProfilePage /></AdminLayout></RequireAdmin>} />
           <Route path="*" element={<Navigate to="/overview" replace />} />
         </Routes>
-      </AuthProvider>
+      </AuthProvider></ToastProvider>
     </BrowserRouter>
   );
 }
