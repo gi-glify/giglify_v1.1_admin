@@ -7,6 +7,10 @@ import { ThemeProvider } from "./app/ThemeProvider";
 
 AOS.init({ duration: 600, once: true, easing: "ease-out", offset: 40 });
 
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
+  window.addEventListener("load", () => { void navigator.serviceWorker.register("/sw.js"); });
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider><AppRouter /></ThemeProvider>

@@ -6,6 +6,8 @@ interface ImportMetaEnv {
   readonly VITE_ADMIN_APP_URL?: string;
 }
 
+interface WindowEventMap { beforeinstallprompt: Event; }
+
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }

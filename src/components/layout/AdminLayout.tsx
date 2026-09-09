@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
 import { BottomNav } from "./BottomNav";
+import { InstallPrompt } from "../../app/InstallPrompt";
 
 export function AdminLayout({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -34,6 +35,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <BottomNav onMenu={() => setMenuOpen(true)} menuOpen={menuOpen} />
+      <InstallPrompt />
     </div>
   );
 }
