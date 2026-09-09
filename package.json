@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "test": "node --experimental-strip-types --test test/*.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.114.0",
+    "aos": "^2.3.4",
+    "lucide-react": "^0.294.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.18.3"
