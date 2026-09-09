@@ -49,6 +49,16 @@ h3 { margin-bottom: 12px; font-size: 2rem; }
 .empty-state { max-width: 700px; padding: 70px 30px; border: 1px dashed var(--border); border-radius: 20px; color: var(--text-muted); background: var(--bg-elevated); }
 .empty-state h3 { color: var(--text); }
 .empty-state p:last-child { margin-bottom: 0; line-height: 1.7; }
+.date-range-picker { display: flex; align-items: end; gap: 8px; flex-wrap: wrap; }
+.date-range-picker label { display: grid; gap: 5px; color: var(--text-muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+.date-range-picker input { min-width: 138px; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elevated); color: var(--text); font-family: var(--font-body); }
+.date-range-arrow { padding-bottom: 9px; color: var(--text-muted); }
+.field-error { flex-basis: 100%; color: #b42318; font-size: .78rem; }
+.metric-card small { display: inline-flex; align-items: center; gap: 3px; }
+.alert-warning { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #fddd7a; background: #fff8e7; color: #7f4d03; }
+.stale-banner { margin-top: 18px; }
+.overview-loading { margin-top: 18px; }
+.last-updated { margin: 16px 0 0; color: var(--text-muted); font-size: .78rem; }
 .status-dot-live { background: #9be36e; }
 .auth-page { display: grid; min-height: 100vh; place-items: center; padding: 24px; background: var(--bg); }
 .auth-card, .loading-card { width: min(100%, 460px); padding: 34px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg-elevated); box-shadow: 0 24px 80px rgba(15, 23, 42, .12); }
