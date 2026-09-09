@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { useLocation } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
+import { BottomNav } from "./BottomNav";
 
 export function AdminLayout({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -25,6 +26,7 @@ export function AdminLayout({ children }: { children: ReactNode }) {
         <Topbar onMenu={() => setMenuOpen(true)} />
         {children}
       </main>
+      <BottomNav onMenu={() => setMenuOpen(true)} menuOpen={menuOpen} />
     </div>
   );
 }

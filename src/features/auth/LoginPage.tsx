@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/AuthProvider";
+import { Eye, EyeOff } from "lucide-react";
 
 export function LoginPage() {
   const { session, isAdmin, loading, error: authError, signIn } = useAuth();
@@ -10,6 +11,7 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   if (!loading && session && isAdmin === true) return <Navigate to="/overview" replace />;
   if (!loading && session && isAdmin === false) return <Navigate to="/forbidden" replace />;
@@ -37,7 +39,7 @@ export function LoginPage() {
         {(error || authError) && <div className="alert alert-error">{error ?? authError}</div>}
         <form onSubmit={submit} className="auth-form" data-aos="fade-up">
           <label>Email<input autoComplete="email" required type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-          <label>Password<input autoComplete="current-password" required type="password" value={password} onChange={(event) => setPassword(event.target.value)} /></label>
+          <label>Password<div className="password-field"><input autoComplete="current-password" required type={showPassword ? "text" : "password"} value={password} onChange={(event) => setPassword(event.target.value)} /><button type="button" className="password-toggle" onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button></div></label>
           <button className="primary-button" disabled={submitting || loading}>{submitting ? "Signing in…" : "Sign in"}</button>
         </form>
       </section>
