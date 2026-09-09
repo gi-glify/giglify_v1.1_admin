@@ -6,6 +6,7 @@ import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
 import { BottomNav } from "./BottomNav";
 import { InstallPrompt } from "../../app/InstallPrompt";
+import { AdminAiAssistant } from "../operations/AdminAiAssistant";
 
 export function AdminLayout({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -34,8 +35,9 @@ export function AdminLayout({ children }: { children: ReactNode }) {
       <main className="content">
         {children}
       </main>
-      <BottomNav onMenu={() => setMenuOpen(true)} menuOpen={menuOpen} />
+      <BottomNav />
       <InstallPrompt />
+      <AdminAiAssistant />
     </div>
   );
 }
