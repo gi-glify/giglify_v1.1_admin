@@ -123,10 +123,39 @@ details summary { cursor: pointer; line-height: 1.6; }
 .trend-card { display: grid; grid-template-columns: minmax(220px, .8fr) 1.2fr; gap: 24px; margin-top: 22px; padding: 22px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-elevated); }
 .trend-card h3 { margin-bottom: 8px; font-size: 1.25rem; }
 .trend-card p:not(.eyebrow) { margin-bottom: 0; color: var(--text-muted); line-height: 1.5; }
+.finance-section { margin-top: 22px; }
+.section-heading { margin-bottom: 14px; }
+.section-heading h3 { margin-bottom: 6px; font-size: 1.25rem; }
+.section-heading p:not(.eyebrow) { color: var(--text-muted); line-height: 1.5; }
+.finance-grid { margin-top: 0; }
+.queue-row small { display: block; margin-top: 5px; color: var(--text-muted); }
+.queue-row .payout-available { color: #8a5300; font-weight: 700; }
 .trend-chart { display: flex; align-items: end; justify-content: space-around; gap: 16px; min-height: 150px; padding: 10px 10px 0; border-bottom: 1px solid var(--border); }
 .trend-column { display: grid; align-content: end; justify-items: center; gap: 8px; height: 140px; min-width: 54px; }
 .trend-bar { width: 32px; min-height: 4px; border-radius: 7px 7px 0 0; background: linear-gradient(#f5a623, #d97706); }
 .trend-column small { color: var(--text-muted); font-size: .7rem; white-space: nowrap; }
+.inbox-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-elevated); }
+.inbox-summary { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: .84rem; }
+.inbox-summary svg { color: var(--accent-hover); }
+.inbox-summary strong { color: var(--text); }
+.inbox-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: .82rem; font-weight: 700; }
+.inbox-toggle input { accent-color: var(--accent-hover); }
+.inbox-list { display: grid; gap: 10px; }
+.inbox-message { overflow: hidden; border: 1px solid var(--border); border-radius: 15px; background: var(--bg-elevated); box-shadow: 0 6px 18px rgba(15, 23, 42, .025); }
+.inbox-message.is-unread { border-left: 4px solid var(--accent); }
+.inbox-message.is-selected { border-color: color-mix(in srgb, var(--accent) 65%, var(--border)); }
+.inbox-message-button { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 13px; width: 100%; padding: 16px; border: 0; background: transparent; color: var(--text); text-align: left; cursor: pointer; }
+.inbox-message-button:hover { background: var(--accent-soft); }
+.inbox-message-status { display: inline-flex; color: var(--accent-hover); }
+.inbox-message-copy { display: grid; gap: 4px; min-width: 0; }
+.inbox-message-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.inbox-message-copy small { overflow: hidden; color: var(--text-muted); text-overflow: ellipsis; white-space: nowrap; }
+.inbox-message-copy > span { overflow: hidden; color: var(--text-muted); font-size: .86rem; text-overflow: ellipsis; white-space: nowrap; }
+.inbox-message-detail { padding: 0 16px 16px 50px; }
+.inbox-message-body { padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text); line-height: 1.65; white-space: normal; }
+.inbox-message-body p { margin: 0 0 10px; }
+.inbox-message-body p:last-child { margin-bottom: 0; }
+.inbox-read-note { display: inline-flex; align-items: center; gap: 5px; color: var(--text-muted); font-size: .8rem; }
 @media (max-width: 700px) { .trend-card { grid-template-columns: 1fr; } }
 
 @media (max-width: 800px) {
@@ -201,6 +230,10 @@ details summary { cursor: pointer; line-height: 1.6; }
   .queue-row { align-items: flex-start; flex-direction: column; gap: 12px; padding: 15px; }
   .queue-row div:last-child { width: 100%; align-items: flex-start; justify-items: start; }
   .queue-row .action-row { justify-content: flex-start; width: 100%; margin-top: 8px; }
+  .inbox-toolbar { align-items: flex-start; flex-direction: column; }
+  .inbox-message-button { grid-template-columns: auto minmax(0, 1fr); }
+  .inbox-message-button .status-pill { grid-column: 2; justify-self: start; }
+  .inbox-message-detail { padding-left: 16px; }
   .detail-drawer { width: 100%; padding: 22px 18px 30px; }
   .action-dialog { width: calc(100% - 24px); margin: 12px; padding: 20px; }
   .trend-card { padding: 17px; }

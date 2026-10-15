@@ -39,11 +39,11 @@ function selectedTemplate(id: string): EmailTemplate {
 export function EmailComposerPage() {
   const [params] = useSearchParams();
   const { notify } = useToast();
-  const [template, setTemplate] = useState("general");
+  const [template, setTemplate] = useState(params.get("subject") ? "custom" : "general");
   const [to, setTo] = useState(params.get("to") ?? "");
   const [recipientName, setRecipientName] = useState(params.get("name") ?? "");
-  const [subject, setSubject] = useState(EMAIL_TEMPLATES[0].subject);
-  const [message, setMessage] = useState(EMAIL_TEMPLATES[0].message);
+  const [subject, setSubject] = useState(params.get("subject") ?? EMAIL_TEMPLATES[0].subject);
+  const [message, setMessage] = useState(params.get("subject") ? "" : EMAIL_TEMPLATES[0].message);
   const [sending, setSending] = useState(false);
 
   function applyTemplate(nextTemplate: string) {

@@ -20,6 +20,11 @@ export interface OverviewMetrics {
   failedGradingJobs: number;
   rewardsApproved: number;
   rewardsPaid: number;
+  packageRevenue: number;
+  verificationDeposits: number;
+  taskCreditsApproved: number;
+  payoutsRequestedAmount: number;
+  payoutsPaidAmount: number;
 }
 
 export function fetchOverviewMetrics(range: DateRange): Promise<OverviewMetrics> {
