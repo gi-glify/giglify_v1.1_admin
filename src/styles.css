@@ -512,15 +512,17 @@ button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .email-preview-heading .eyebrow { margin: 0; }
 .email-preview-heading small { color: var(--text-muted); font-size: .72rem; }
 .email-preview { overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: #fff; color: #374151; box-shadow: 0 8px 24px rgba(15, 23, 42, .08); }
-.email-preview-header { padding: 24px 22px; background: linear-gradient(135deg, #4f46e5, #2563eb); color: #fff; }
+.email-preview-header { padding: 24px 22px; background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; }
+.email-preview-brand { display: flex; align-items: center; gap: 9px; }
+.email-preview-brand img { width: 27px; height: 27px; border-radius: 7px; }
 .email-preview-header strong { display: block; font-size: .8rem; letter-spacing: .2em; }
-.email-preview-header small { display: block; margin-top: 22px; color: #e0e7ff; font-size: .6rem; font-weight: 800; letter-spacing: .15em; }
+.email-preview-header small { display: block; margin-top: 22px; color: #f5a623; font-size: .6rem; font-weight: 800; letter-spacing: .15em; }
 .email-preview-header h4 { margin: 8px 0 0; color: #fff; font-family: var(--font-heading); font-size: 1.4rem; line-height: 1.18; }
 .email-preview-body { padding: 24px 22px; font-size: .86rem; line-height: 1.55; }
 .email-preview-body > p:first-child { margin-bottom: 16px; }
 .email-preview-message p { margin: 0 0 12px; }
 .email-preview-message p:last-child { margin-bottom: 0; }
-.email-preview-note { margin-top: 21px; padding: 13px; border: 1px solid #e0e7ff; border-radius: 11px; background: #f5f7ff; color: #3730a3; font-size: .74rem; }
+.email-preview-note { margin-top: 21px; padding: 13px; border: 1px solid #f5d583; border-radius: 11px; background: #fff7e6; color: #7f4d03; font-size: .74rem; }
 .email-preview-signoff { margin: 22px 0 0; color: #6b7280; font-size: .76rem; }
 .email-preview-signoff strong { color: #182033; }
 .email-preview-footer { padding: 13px 22px; border-top: 1px solid #eef0f6; background: #fafbff; color: #7b8190; font-size: .65rem; }
