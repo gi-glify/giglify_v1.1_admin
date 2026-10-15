@@ -13,6 +13,7 @@ import { PaymentQueuePage } from "../features/payments/PaymentQueuePage";
 import { UsersSupportPage } from "../features/support/UsersSupportPage";
 import { AuditLogPage } from "../features/audit/AuditLogPage";
 import { AdminProfilePage } from "../features/profile/AdminProfilePage";
+import { EmailComposerPage } from "../features/email/EmailComposerPage";
 import { ToastProvider } from "./ToastProvider";
 
 function ProtectedFeature({ title }: { title: string }) {
@@ -35,6 +36,7 @@ export function AppRouter() {
           <Route path="/users" element={<RequireAdmin><AdminLayout><UsersSupportPage /></AdminLayout></RequireAdmin>} />
           <Route path="/audit" element={<RequireAdmin><AdminLayout><AuditLogPage /></AdminLayout></RequireAdmin>} />
           <Route path="/profile" element={<RequireAdmin><AdminLayout><AdminProfilePage /></AdminLayout></RequireAdmin>} />
+          <Route path="/email" element={<RequireAdmin><AdminLayout><EmailComposerPage /></AdminLayout></RequireAdmin>} />
           <Route path="*" element={<Navigate to="/overview" replace />} />
         </Routes>
       </AuthProvider></ToastProvider>

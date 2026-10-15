@@ -17,6 +17,7 @@ export const ADMIN_FUNCTIONS = [
   "admin-audit-explorer",
   "admin-ai-analysis",
   "admin-profile",
+  "admin-send-email",
 ] as const;
 
 export type AdminFunctionName = (typeof ADMIN_FUNCTIONS)[number];

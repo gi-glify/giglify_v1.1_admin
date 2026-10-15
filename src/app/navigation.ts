@@ -1,4 +1,4 @@
-import { Activity, ClipboardCheck, DollarSign, FileSearch, HandIcon, ListChecks, ShieldCheck, Users } from "lucide-react";
+import { Activity, ClipboardCheck, DollarSign, FileSearch, HandIcon, ListChecks, Mail, ShieldCheck, Users } from "lucide-react";
 import type { LucideProps } from "lucide-react";
 import { createElement } from "react";
 
@@ -12,4 +12,5 @@ export const navigation = [
   { id: "payments", label: "Payments & payouts", path: "/payments", icon: PaymentIcon },
   { id: "users", label: "Users & support", path: "/users", icon: Users },
   { id: "audit", label: "Audit log", path: "/audit", icon: FileSearch },
+  { id: "email", label: "Email users", path: "/email", icon: Mail },
 ] as const;
