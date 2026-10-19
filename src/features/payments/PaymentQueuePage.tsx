@@ -84,20 +84,21 @@ export function PaymentQueuePage() {
         {items.map((item) => {
           if ("package_tier" in item) {
             return <div className="queue-row" key={item.id}>
-              <div><strong>{item.package_tier ? `${item.package_tier.toUpperCase()} package` : "Package payment"}</strong><span>User {item.user_id.slice(0, 8)} · {money(item.amount)} {item.currency} · {item.provider || "provider pending"}</span><small>{item.tuid || item.id} · {item.completed_at ? `Completed ${new Date(item.completed_at).toLocaleString()}` : "Not completed"}</small></div>
+              <div><strong>{item.account_name}</strong><span>{item.account_email || "Email unavailable"} · Account {item.user_id}</span><small>{item.package_tier ? `${item.package_tier.toUpperCase()} package` : "Package payment"} · {money(item.amount)} {item.currency} · {item.provider || "provider pending"}</small><small>{item.tuid || item.id} · {item.completed_at ? `Completed ${new Date(item.completed_at).toLocaleString()}` : "Not completed"}</small></div>
               <span className="status-pill">{item.status.replace("_", " ")}</span>
             </div>;
           }
           if ("amount_usd" in item) {
             return <div className="queue-row" key={item.id}>
-              <div><strong>{item.id.slice(0, 14)}…</strong><span>User {item.user_id.slice(0, 8)} · {item.amount_usd} USD · {item.method}</span></div>
+              <div><strong>{item.account_name}</strong><span>{item.account_email || "Email unavailable"} · Account {item.user_id}</span><small>{item.id} · {item.amount_usd} USD · {item.method}</small></div>
               <div><span className="status-pill">{item.status.replace("_", " ")}</span><div className="action-row"><button className="primary-button" onClick={() => action(item, "approve")} disabled={item.status === "verified"}>Approve</button>{!["rejected", "verified"].includes(item.status) && <button className="danger-button" onClick={() => action(item, "reject")}>Reject</button>}</div></div>
             </div>;
           }
           return <div className="queue-row" key={item.id}>
             <div>
-              <strong>{item.worker_name}</strong>
-              <span>User {item.user_id.slice(0, 8)} · Requested {money(item.amount)}</span>
+              <strong>{item.account_name || item.worker_name}</strong>
+              <span>{item.account_email || "Email unavailable"} · Account {item.user_id}</span>
+              <small>Requested {money(item.amount)}</small>
               <small>Task credits {money(item.taskCredits)} · Wallet {money(item.walletBalance)} · Paid {money(item.payoutsPaid)}</small>
               <small className="payout-available">Available after payout obligations: {money(item.availableAfterPayouts)} · Pending obligations: {money(item.payoutsPending)}</small>
             </div>
