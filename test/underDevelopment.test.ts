@@ -10,9 +10,10 @@ test("admin under-development mode defaults on unless the value is exactly false
   assert.equal(isUnderDevelopment("false"), false);
 });
 
-test("admin router contains an authenticated maintenance gate", async () => {
+test("admin router uses under-development mode as the default for every route", async () => {
   const source = await readFile(new URL("../src/app/router.tsx", import.meta.url), "utf8");
   assert.match(source, /UNDER_DEVELOPMENT_MODE/);
   assert.match(source, /UnderDevelopmentPage/);
-  assert.match(source, /session && isAdmin === true && UNDER_DEVELOPMENT_MODE/);
+  assert.match(source, /if \(UNDER_DEVELOPMENT_MODE\)/);
+  assert.doesNotMatch(source, /session && isAdmin === true && UNDER_DEVELOPMENT_MODE/);
 });

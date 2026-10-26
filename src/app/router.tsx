@@ -17,7 +17,6 @@ import { EmailComposerPage } from "../features/email/EmailComposerPage";
 import { CampaignPage } from "../features/email/CampaignPage";
 import { InboxPage } from "../features/inbox/InboxPage";
 import { ToastProvider } from "./ToastProvider";
-import { useAuth } from "./AuthProvider";
 import { UNDER_DEVELOPMENT_MODE } from "../lib/underDevelopment";
 import { UnderDevelopmentPage } from "../features/maintenance/UnderDevelopmentPage";
 
@@ -26,9 +25,7 @@ function ProtectedFeature({ title }: { title: string }) {
 }
 
 function AdminApplicationRoutes() {
-  const { session, isAdmin } = useAuth();
-
-  if (session && isAdmin === true && UNDER_DEVELOPMENT_MODE) {
+  if (UNDER_DEVELOPMENT_MODE) {
     return <UnderDevelopmentPage />;
   }
 
