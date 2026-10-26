@@ -49,6 +49,7 @@ export function UnderDevelopmentPage() {
               <button className="primary-button" type="button" onClick={handleSignOut} disabled={signingOut}><LogOut size={17} aria-hidden="true" /> {signingOut ? "Signing out…" : "Sign out"}</button>
               <span><Sparkles size={15} aria-hidden="true" /> Thank you for your patience.</span>
             </div>
+            <p className="admin-underdev-owner-note"><strong>Site owner?</strong> If restoration is urgent, contact the developer directly to discuss expedited logistics. Under the agreed service terms, restoration timelines may depend on resolving outstanding payment or unanswered project communication.</p>
             {signOutError && <p className="admin-underdev-error" role="alert">{signOutError}</p>}
           </div>
           <div className="admin-underdev-visual" aria-label="Admin console upgrade status">
