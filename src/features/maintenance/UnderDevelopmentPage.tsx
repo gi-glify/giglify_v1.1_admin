@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Activity, ArrowUpRight, CheckCircle2, LogOut, Sparkles, Wrench } from "lucide-react";
+import { Activity, ArrowUpRight, CheckCircle2, Cog, LogOut, Sparkles, Wrench } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/AuthProvider";
 
@@ -53,6 +53,12 @@ export function UnderDevelopmentPage() {
           </div>
           <div className="admin-underdev-visual" aria-label="Admin console upgrade status">
             <div className="admin-underdev-glow" aria-hidden="true" />
+            <div className="admin-underdev-gear-system" aria-hidden="true">
+              <Cog className="admin-underdev-gear admin-underdev-gear-large" size={190} strokeWidth={1} />
+              <Cog className="admin-underdev-gear admin-underdev-gear-mid" size={125} strokeWidth={1.2} />
+              <Cog className="admin-underdev-gear admin-underdev-gear-small" size={78} strokeWidth={1.4} />
+              <span className="admin-underdev-gear-core" />
+            </div>
             <div className="admin-underdev-console">
               <div className="admin-underdev-console-top"><span>GIGLIFY / OPERATIONS</span><Activity size={15} aria-hidden="true" /></div>
               <strong>Console upgrade</strong>
