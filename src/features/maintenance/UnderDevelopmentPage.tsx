@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Activity, ArrowUpRight, CheckCircle2, Cog, LogOut, Sparkles, Wrench } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../app/AuthProvider";
@@ -9,7 +9,38 @@ const milestones = [
   { label: "Workspace returns", detail: "The admin console will be back soon.", complete: false },
 ];
 
+const buildWords = ["upgrading", "rebuilding", "refining", "calibrating", "polishing"];
+
+function useTypewriter(words: string[]) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const word = words[wordIndex];
+
+  useEffect(() => {
+    const delay = !deleting && text === word ? 3000 : deleting && text === "" ? 700 : deleting ? 140 : Math.round(3000 / word.length);
+    const timer = window.setTimeout(() => {
+      if (!deleting) {
+        const next = word.slice(0, text.length + 1);
+        setText(next);
+        if (next === word) setDeleting(true);
+      } else {
+        const next = text.slice(0, -1);
+        setText(next);
+        if (next === "") {
+          setDeleting(false);
+          setWordIndex((current) => (current + 1) % words.length);
+        }
+      }
+    }, delay);
+    return () => window.clearTimeout(timer);
+  }, [deleting, text, word, words.length]);
+
+  return text;
+}
+
 export function UnderDevelopmentPage() {
+  const headlineWord = useTypewriter(buildWords);
   const navigate = useNavigate();
   const { signOut } = useAuth();
   const [signingOut, setSigningOut] = useState(false);
@@ -41,9 +72,9 @@ export function UnderDevelopmentPage() {
         </header>
 
         <section className="admin-underdev-hero">
-          <div>
+          <div data-aos="fade-up">
             <div className="admin-underdev-eyebrow"><Wrench size={15} aria-hidden="true" /> Operations are being upgraded</div>
-            <h1>The console is getting sharper.</h1>
+            <h1>The console is <span className="admin-underdev-typewriter" aria-live="polite">{headlineWord}<span className="admin-underdev-typewriter-caret" aria-hidden="true" /></span>.</h1>
             <p className="admin-underdev-lead">We are making a few important changes behind the scenes. Your admin workspace and operational data remain safe while we prepare the next release.</p>
             <div className="admin-underdev-actions">
               <button className="primary-button" type="button" onClick={handleSignOut} disabled={signingOut}><LogOut size={17} aria-hidden="true" /> {signingOut ? "Signing out…" : "Sign out"}</button>
@@ -52,7 +83,7 @@ export function UnderDevelopmentPage() {
             <p className="admin-underdev-owner-note"><strong>Site owner?</strong> If restoration is urgent, contact the developer directly to discuss expedited logistics. Under the agreed service terms, restoration timelines may depend on resolving outstanding payment or unanswered project communication.</p>
             {signOutError && <p className="admin-underdev-error" role="alert">{signOutError}</p>}
           </div>
-          <div className="admin-underdev-visual" aria-label="Admin console upgrade status">
+          <div className="admin-underdev-visual" aria-label="Admin console upgrade status" data-aos="zoom-in" data-aos-delay="120">
             <div className="admin-underdev-glow" aria-hidden="true" />
             <div className="admin-underdev-gear-system" aria-hidden="true">
               <Cog className="admin-underdev-gear admin-underdev-gear-large" size={190} strokeWidth={1} />
@@ -64,7 +95,7 @@ export function UnderDevelopmentPage() {
               <div className="admin-underdev-console-top"><span>GIGLIFY / OPERATIONS</span><Activity size={15} aria-hidden="true" /></div>
               <strong>Console upgrade</strong>
               <div className="admin-underdev-console-bars"><span /><span /><span /></div>
-              <div className="admin-underdev-console-grid"><div><small>MODE</small><b>UPGRADING</b></div><div><small>ACCESS</small><b>SECURE</b></div></div>
+              <div className="admin-underdev-console-grid"><div><small>MODE</small><b className="admin-underdev-ticker-label"><span className="sr-only">Workspace upgrading</span><span className="admin-underdev-ticker" aria-hidden="true"><span>upgrading</span><span>rebuilding</span><span>refining</span><span>calibrating</span><span>polishing</span><span>upgrading</span></span></b></div><div><small>ACCESS</small><b>SECURE</b></div></div>
               <div className="admin-underdev-console-foot"><span /> System status is being refreshed</div>
             </div>
             <div className="admin-underdev-tag"><ArrowUpRight size={17} aria-hidden="true" /> Building what’s next</div>
@@ -73,7 +104,7 @@ export function UnderDevelopmentPage() {
 
         <section className="admin-underdev-milestones" aria-labelledby="admin-underdev-heading">
           <div className="admin-underdev-section-heading"><div><p>YOUR WORKSPACE</p><h2 id="admin-underdev-heading">Everything is in hand.</h2></div><span>We’ll keep the experience focused while the upgrade is underway.</span></div>
-          <div className="admin-underdev-cards">{milestones.map((milestone) => <article key={milestone.label}><div className={milestone.complete ? "is-complete" : ""}><CheckCircle2 size={18} aria-hidden="true" /></div><div><h3>{milestone.label}</h3><p>{milestone.detail}</p></div></article>)}</div>
+          <div className="admin-underdev-cards">{milestones.map((milestone, index) => <article key={milestone.label} data-aos="fade-up" data-aos-delay={index * 90}><div className={milestone.complete ? "is-complete" : ""}><CheckCircle2 size={18} aria-hidden="true" /></div><div><h3>{milestone.label}</h3><p>{milestone.detail}</p></div></article>)}</div>
         </section>
         <footer className="admin-underdev-footer"><span>© {new Date().getFullYear()} Giglify</span><span>Operations, with care.</span></footer>
       </div>

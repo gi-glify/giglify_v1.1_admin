@@ -614,6 +614,8 @@ button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .admin-underdev-hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); align-items: center; gap: clamp(34px, 8vw, 96px); padding: clamp(64px, 10vw, 116px) 0 92px; }
 .admin-underdev-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #f5a623; font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .admin-underdev-hero h1 { max-width: 670px; margin: 16px 0 22px; color: #f8fafc; font-family: var(--font-heading); font-size: clamp(2.75rem, 6vw, 5.4rem); line-height: .98; letter-spacing: -.07em; }
+.admin-underdev-typewriter { display: inline-flex; align-items: baseline; min-width: 11.5ch; color: #f5a623; }
+.admin-underdev-typewriter-caret { display: inline-block; width: .055em; height: .78em; margin-left: .08em; background: #f5a623; animation: adminUnderdevCaretBlink .82s steps(2, start) infinite; }
 .admin-underdev-lead { max-width: 580px; margin: 0; color: #a8b4c5; font-size: clamp(1rem, 1.7vw, 1.18rem); line-height: 1.75; }
 .admin-underdev-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 34px; }
 .admin-underdev-actions .primary-button { border-color: #f5a623; background: #f5a623; color: #241604; }
@@ -624,13 +626,14 @@ button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .admin-underdev-error { margin-top: 14px; color: #fecaca; font-size: .82rem; }
 .admin-underdev-visual { position: relative; min-height: 380px; display: grid; place-items: center; }
 .admin-underdev-glow { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(245, 166, 35, .16); filter: blur(36px); }
-.admin-underdev-gear-system { position: absolute; inset: 3% -4% 0; z-index: 0; pointer-events: none; }
-.admin-underdev-gear { position: absolute; color: rgba(245, 166, 35, .42); filter: drop-shadow(0 0 16px rgba(245, 166, 35, .1)); }
+.admin-underdev-gear-system { position: absolute; inset: 3% -4% 0; z-index: 1; pointer-events: none; }
+.admin-underdev-gear { display: block; position: absolute; color: rgba(245, 166, 35, .68); filter: drop-shadow(0 0 16px rgba(245, 166, 35, .22)); }
 .admin-underdev-gear-large { top: -4%; left: 5%; animation: adminUnderdevGearSpin 22s linear infinite; }
 .admin-underdev-gear-mid { right: 2%; bottom: 2%; color: rgba(148, 163, 184, .38); animation: adminUnderdevGearSpinReverse 15s linear infinite; }
 .admin-underdev-gear-small { top: 42%; right: 20%; color: rgba(245, 166, 35, .7); animation: adminUnderdevGearSpin 10s linear infinite; }
 .admin-underdev-gear-core { position: absolute; top: 48%; right: 32%; width: 16px; height: 16px; border: 3px solid #f5a623; border-radius: 50%; background: #07111f; box-shadow: 0 0 0 7px rgba(245, 166, 35, .1), 0 0 24px rgba(245, 166, 35, .32); }
-.admin-underdev-console, .admin-underdev-tag { z-index: 1; }
+.admin-underdev-console { z-index: 2; }
+.admin-underdev-tag { z-index: 3; }
 .admin-underdev-console { position: relative; width: min(100%, 420px); padding: 28px; border: 1px solid rgba(148, 163, 184, .25); border-radius: 24px; background: linear-gradient(145deg, rgba(30, 41, 59, .96), rgba(15, 23, 42, .92)); box-shadow: 0 32px 70px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .08); transform: rotate(3deg); }
 .admin-underdev-console-top, .admin-underdev-console-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #94a3b8; font-size: .68rem; font-weight: 800; letter-spacing: .09em; }
 .admin-underdev-console-top svg { color: #f5a623; }
@@ -642,6 +645,9 @@ button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .admin-underdev-console-grid div { padding: 14px; border: 1px solid rgba(148, 163, 184, .15); border-radius: 12px; background: rgba(15, 23, 42, .42); }
 .admin-underdev-console-grid small { display: block; margin-bottom: 6px; color: #64748b; font-size: .64rem; font-weight: 800; letter-spacing: .09em; }
 .admin-underdev-console-grid b { color: #fde7b0; font-size: .82rem; letter-spacing: .04em; }
+.admin-underdev-ticker-label { display: block; height: 1.05em; overflow: hidden; color: #f5a623 !important; }
+.admin-underdev-ticker { display: flex; flex-direction: column; color: #f5a623; line-height: 1.05; animation: adminUnderdevStatusTicker 15s cubic-bezier(.65, 0, .35, 1) infinite; }
+.admin-underdev-ticker span { display: block; height: 1.05em; color: #f5a623; }
 .admin-underdev-console-foot { justify-content: flex-start; color: #94a3b8; font-size: .72rem; font-weight: 500; letter-spacing: 0; }
 .admin-underdev-console-foot span { flex: 0 0 auto; }
 .admin-underdev-tag { position: absolute; right: -4px; bottom: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 12px 14px; border: 1px solid rgba(245, 166, 35, .3); border-radius: 12px; background: #101b2d; color: #fde7b0; box-shadow: 0 16px 30px rgba(0, 0, 0, .24); font-size: .78rem; font-weight: 800; }
@@ -663,6 +669,15 @@ button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .admin-underdev-orb-two { width: 250px; height: 250px; bottom: 12%; left: -180px; background: rgba(245, 166, 35, .08); filter: blur(15px); }
 @keyframes adminUnderdevGearSpin { to { transform: rotate(360deg); } }
 @keyframes adminUnderdevGearSpinReverse { to { transform: rotate(-360deg); } }
+@keyframes adminUnderdevStatusTicker {
+  0%, 12% { transform: translateY(0); }
+  17%, 29% { transform: translateY(-1.05em); }
+  34%, 46% { transform: translateY(-2.1em); }
+  51%, 63% { transform: translateY(-3.15em); }
+  68%, 80% { transform: translateY(-4.2em); }
+  85%, 100% { transform: translateY(-5.25em); }
+}
+@keyframes adminUnderdevCaretBlink { 50% { opacity: 0; } }
 @media (max-width: 800px) { .admin-underdev-hero { grid-template-columns: 1fr; padding: 60px 0 70px; } .admin-underdev-visual { min-height: 330px; } .admin-underdev-cards { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .admin-underdev-header, .admin-underdev-section-heading { align-items: flex-start; flex-direction: column; } .admin-underdev-status { align-self: flex-start; } .admin-underdev-hero h1 { font-size: 3.2rem; } .admin-underdev-tag { right: -2px; bottom: 8px; } .admin-underdev-section-heading > span { text-align: left; } .admin-underdev-footer { align-items: flex-start; flex-direction: column; gap: 5px; } }
-@media (prefers-reduced-motion: reduce) { .admin-underdev-console, .admin-underdev-actions .primary-button { transform: none; transition: none; } .admin-underdev-gear { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .admin-underdev-console, .admin-underdev-actions .primary-button { transform: none; transition: none; } .admin-underdev-gear, .admin-underdev-ticker, .admin-underdev-typewriter-caret { animation: none; } }
